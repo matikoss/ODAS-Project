@@ -1,0 +1,48 @@
+<!--templates/user-home.html-->
+
+{% extends "user-base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="user-container">
+    <div class="user-details-container">
+        <a id="user-details">User details:</a>
+        <div>
+            <a>Username: {{ name }}</a>
+        </div>
+        <div>
+            <a>Email: {{ email }}</a>
+        </div>
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div>
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="alert alert-{{ category }}" role="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="register-form">
+        <form action="/user/profile/changepassword" method="post">
+            <h4>Change password</h4>
+            <div class="form-group">
+                <label class="pass-change-label" for="inputCurrentPassword">Current password:</label>
+                <input name="current_password" id="inputCurrentPassword" type="password" class="form-control">
+            </div>
+            <div class="form-group">
+                <label class="pass-change-label" for="inputNewPassword">New password:</label>
+                <input name="new_password" id="inputNewPassword" type="password" class="form-control">
+            </div>
+            <div class="button-holder">
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

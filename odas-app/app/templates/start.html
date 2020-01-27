@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ODAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link>
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/startpage-styles.css') }}">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-dark bg-dark rounded">
+        <a class="navbar-brand">Welcome!</a>
+        <form class="form-inline" method="post" action="/login">
+            <label class="start-label">
+                Email
+                :
+                <input name="email" class="form-control mr-sm-2" type="email" placeholder="Enter email"
+                       aria-label="Email">
+            </label>
+            <label class="start-label">
+                Password:
+                <input name="password" class="form-control mr-sm-2" type="password" placeholder="Enter password"
+                       aria-label="Password">
+            </label>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+        </form>
+    </nav>
+</div>
+<div class="register-form">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <!--    <div class="alert alert-warning" role="alert">-->
+    <!--        {{ messages[0] }} Try signing in.-->
+    <!--    </div>-->
+    <div>
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="alert alert-{{ category }}" role="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <form action="/signup" method="post">
+        <div class="register-header">
+            <h1>Sign Up!</h1>
+        </div>
+        <div class="form-group">
+            <label for="inputUsername" class="input-label">Username:</label>
+            <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="input-label">Email:</label>
+            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="input-label">Password:</label>
+            <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <div class="button-holder">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+</html>

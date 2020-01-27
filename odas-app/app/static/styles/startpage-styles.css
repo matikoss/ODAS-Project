@@ -1,0 +1,28 @@
+.start-label {
+    color: white;
+    font-weight: bold;
+}
+
+.button-holder {
+    text-align: center;
+}
+
+.register-header {
+    text-align: center;
+}
+
+.input-label {
+    font-weight: bold;
+}
+
+.register-form {
+    margin: 1% 10% 1% 10%;
+}
+
+body {
+    background-color: #8cffab;
+}
+
+h1 {
+    font-weight: bold;
+}

@@ -1,0 +1,41 @@
+.navbar-nav {
+    flex-direction: row;
+}
+
+.nav-link {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+}
+
+.user-container {
+    text-align: center;
+}
+
+.user-details-container {
+    padding-top: 1rem;
+    border-color: black;
+}
+
+.button-holder {
+    text-align: center;
+}
+
+.pass-change-label label {
+    font-weight: bold;
+}
+
+.register-form {
+    margin: 1% 20% 1% 20%;
+}
+
+#user-details {
+    font-weight: bold;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+body {
+    background-color: #8cffab;
+}
