@@ -32,6 +32,23 @@
     font-weight: bold;
 }
 
+#new-password-entropy-result {
+    font-weight: bold;
+}
+
+.pass-entropy-container {
+    text-align: left;
+}
+
+.note-container{
+    text-align: left;
+    background-color: #CDCBCA;
+    margin-top: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+}
+
 h1 {
     font-weight: bold;
 }

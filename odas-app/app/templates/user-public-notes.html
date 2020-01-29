@@ -7,6 +7,19 @@
 
 {% block content %}
 <div class="user-container">
-
+    <div class="notes-container">
+        <h2>Public notes:</h2>
+        {% if notes %}
+        <div>
+            {% for note in notes %}
+            <div class="note-container">
+                <label>Author: {{ note.owner_name }}</label> <br>
+                <label>Title: {{ note.title }}</label>
+                <p> {{ note.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

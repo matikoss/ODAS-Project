@@ -14,9 +14,18 @@ def login():
     email = request.form.get('email')
     password = request.form.get('password')
 
+    if not form_validation.check_email_pattern(email):
+        flash('Invalid login details', 'warning')
+        return redirect(url_for('main.start'))
+
+    if not form_validation.check_password_chars(password):
+        flash('Invalid login details')
+        return redirect(url_for('main.start'))
+
     user = User.query.filter_by(email=email).first()
 
     if not user:
+        pass_hash.get_hashed_password('dummyPassword1!')
         flash('Invalid login details', 'warning')
         return redirect(url_for('main.start'))
 
@@ -44,10 +53,21 @@ def signup():
         errors = True
         flash('Password is too short! (min. 8 characters)', 'warning')
 
+    if not form_validation.check_username_chars(name):
+        errors = True
+        flash('Username contains forbidden characters. (Only acceptable: letters, numbers and #!_@().$=+*-[]^?&%)',
+              'warning')
+
     if not form_validation.check_password_chars(password):
         errors = True
         flash(
             'Password contains forbidden characters. (Only acceptable: letters, numbers and {}#,!_@().:;`$=+-*[]^?&%)',
+            'warning')
+
+    if not form_validation.check_password_if_contains_required_chars(password):
+        errors = True
+        flash(
+            'Password must contain at least one upper case letter, one lower case letter, one digit and one special character (#?!@$%^&*-)',
             'warning')
 
     if not form_validation.check_email_pattern(email):

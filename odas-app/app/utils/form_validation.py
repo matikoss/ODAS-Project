@@ -14,9 +14,23 @@ def check_password_length(password: str):
     return True
 
 
+def check_username_chars(username: str):
+    user_regex = re.compile(r"[A-Za-z0-9{}#!_@().$=+*\-\[\]^?&%]+$")
+    if not re.match(user_regex, username):
+        return False
+    return True
+
+
 def check_password_chars(password: str):
     pass_regex = re.compile(r"[A-Za-z0-9{}#,!_@():;.`$=+*\-\[\]^?&%]+$")
     if not re.match(pass_regex, password):
+        return False
+    return True
+
+
+def check_password_if_contains_required_chars(password: str):
+    pass_regex_required = re.compile(r"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")
+    if not re.match(pass_regex_required, password):
         return False
     return True
 

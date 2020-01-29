@@ -7,6 +7,47 @@
 
 {% block content %}
 <div class="user-container">
-
+    <div class="notes-container">
+        <h2>My notes:</h2>
+        {% if notes %}
+        <div>
+            {% for note in notes %}
+            <div class="note-container">
+                <label>Author: {{ note.owner_name }}</label> <br>
+                <label>Title: {{ note.title }}</label>
+                <p> {{ note.text }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div>
+        <ul class=flashes>
+            {% for category, message in messages %}
+            <li class="alert alert-{{ category }}" role="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+    <div class="add-new-post-form">
+        <h2>Add new note:</h2>
+        <form action="/user/notes/private" method="post">
+            <div class="form-group">
+                <label for="inputNewNoteTitle">Note title:</label>
+                <input name="new_note_title" id="inputNewNoteTitle" type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="inputNewNoteText">Note content:</label>
+                <textarea name="new_note_text" id="inputNewNoteText"  class="form-control" rows="5" required></textarea>
+            </div>
+            <input type="checkbox" name="public_input" value="true">Public<br>
+            <div class="button-holder">
+                <button type="submit" class="btn btn-primary">Post new note</button>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

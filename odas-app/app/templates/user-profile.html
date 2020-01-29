@@ -33,11 +33,15 @@
             <h4>Change password</h4>
             <div class="form-group">
                 <label class="pass-change-label" for="inputCurrentPassword">Current password:</label>
-                <input name="current_password" id="inputCurrentPassword" type="password" class="form-control">
+                <input name="current_password" id="inputCurrentPassword" type="password" class="form-control" required>
             </div>
             <div class="form-group">
                 <label class="pass-change-label" for="inputNewPassword">New password:</label>
-                <input name="new_password" id="inputNewPassword" type="password" class="form-control">
+                <input name="new_password" id="inputNewPassword" type="password" class="form-control"
+                       oninput="changeEntropyOutput(calculatePasswordEntropy(this.value))" required>
+            </div>
+            <div class="pass-entropy-container">
+                <p id="new-password-entropy-result">New password entropy:</p>
             </div>
             <div class="button-holder">
                 <button type="submit" class="btn btn-primary">Confirm</button>

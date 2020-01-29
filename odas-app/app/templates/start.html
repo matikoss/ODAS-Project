@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link>
-    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/startpage-styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/startpage-styles.css') }}">
 </head>
 <body>
 <div>
@@ -17,12 +17,12 @@
                 Email
                 :
                 <input name="email" class="form-control mr-sm-2" type="email" placeholder="Enter email"
-                       aria-label="Email">
+                       aria-label="Email" required>
             </label>
             <label class="start-label">
                 Password:
                 <input name="password" class="form-control mr-sm-2" type="password" placeholder="Enter password"
-                       aria-label="Password">
+                       aria-label="Password" required>
             </label>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
         </form>
@@ -31,9 +31,6 @@
 <div class="register-form">
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <!--    <div class="alert alert-warning" role="alert">-->
-    <!--        {{ messages[0] }} Try signing in.-->
-    <!--    </div>-->
     <div>
         <ul class=flashes>
             {% for category, message in messages %}
@@ -49,15 +46,17 @@
         </div>
         <div class="form-group">
             <label for="inputUsername" class="input-label">Username:</label>
-            <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Enter username">
+            <input name="username" type="text" class="form-control" id="inputUsername" placeholder="Enter username" required>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="input-label">Email:</label>
-            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter email" required>
         </div>
         <div class="form-group">
             <label for="inputPassword" class="input-label">Password:</label>
-            <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+            <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password"
+                   oninput="changeEntropyOutput(calculatePasswordEntropy(this.value))" required>
+            <p id="pass-entropy-field">Password entropy: 0</p>
         </div>
         <div class="button-holder">
             <button type="submit" class="btn btn-primary">Sign Up</button>
@@ -73,5 +72,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ url_for('static',filename='js/start.js') }}"></script>
 </body>
 </html>
