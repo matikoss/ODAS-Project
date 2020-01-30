@@ -56,6 +56,16 @@ def post_note():
         errors = True
         flash("Note can't be longer than 500 characters", "warning")
 
+    if not form_validation.check_note_chars(title):
+        errors = True
+        flash("Note title contains forbidden characters. (Only acceptable: letters, numbers and #!_@().$=+*-[]^?&%)",
+              "warning")
+
+    if not form_validation.check_note_chars(text):
+        errors = True
+        flash("Note content contains forbidden characters. (Only acceptable: letters, numbers and #!_@().$=+*-[]^?&%)",
+              "warning")
+
     if errors:
         return redirect(url_for('user.my_notes'))
 

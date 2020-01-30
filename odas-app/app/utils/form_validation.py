@@ -46,3 +46,10 @@ def check_email_pattern(email: str):
     if not re.match(email_regex, email):
         return False
     return True
+
+
+def check_note_chars(note: str):
+    note_regex = re.compile(r"[A-Za-z0-9{}#!_@().$=+*\-\[\]^?&%]+$")
+    if not re.match(note_regex, note):
+        return False
+    return True
