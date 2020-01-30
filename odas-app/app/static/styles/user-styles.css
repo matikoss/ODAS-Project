@@ -36,6 +36,10 @@
     font-weight: bold;
 }
 
+#new-pass-quality-field {
+    font-weight: bold;
+}
+
 .pass-entropy-container {
     text-align: left;
 }
